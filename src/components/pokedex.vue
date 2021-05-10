@@ -1,6 +1,6 @@
 <template>
   <div id="pokedex">
-    <div class="container" style="font-size:30px; ">Buscar Pokemon en la Pokedex </div>
+    <div class="container" style="font-size:30px; ">Buscar Pokemon en la Pokedex</div>
     <div>
       <img
         src="../assets/img/pkball.png"
