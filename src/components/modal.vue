@@ -1,24 +1,21 @@
 <template>
   <div id="modalCharapterPokemon">
-    <div class="infoPokemon" style=" font-size: 15px;">
-      <b-badge pill :variant="colorRandom()">N° {{datosPokemon.id}}</b-badge>
+    <div class="infoPokemon" style="font-size: 15px">
+      <b-badge pill :variant="colorRandom()">N° {{ datosPokemon.id }}</b-badge>
       <br />
-
-      <!-- <img :src="datosPokemon.sprites.front_default" />
-      <img :src="datosPokemon.sprites.front_shiny" />-->
       <div class="imagenPokemon">
-        <img :src="spriteNormal+datosPokemon.name + '.png'" />
-        <img :src="spriteShiny+datosPokemon.name + '.png'" />
+        <img :src="spriteNormal + datosPokemon.name + '.png'" />
+        <img :src="spriteShiny + datosPokemon.name + '.png'" />
       </div>
       <br />
       <br />
 
       <b-badge pill variant="info">
-        <span style="font-size:20px;">{{datosPokemon.name}}</span>
+        <span style="font-size: 20px">{{ datosPokemon.name }}</span>
       </b-badge>
     </div>
     <br />
-    <div class="tableType" style="font-size: 16px;">
+    <div class="tableType" style="font-size: 16px">
       Types:
       <span>
         <b-badge
@@ -27,11 +24,12 @@
           pill
           v-for="tipo in datosPokemon.types"
           :key="tipo.type.name"
-        >{{tipo.type.name}}</b-badge> 
+          >{{ tipo.type.name }}</b-badge
+        >
       </span>
     </div>
     <br />
-    <div class="tableAbility" style=" font-size: 16px;">
+    <div class="tableAbility" style="font-size: 16px">
       Abilities:
       <b-badge
         style="margin-left: 5px"
@@ -39,10 +37,11 @@
         :variant="colorRandom()"
         v-for="abilidad in datosPokemon.abilities"
         :key="abilidad.ability.name"
-      >{{abilidad.ability.name}}</b-badge>
+        >{{ abilidad.ability.name }}</b-badge
+      >
     </div>
     <br />
-    
+
     <div
       class="row align-items-center"
       type="none"
@@ -50,22 +49,19 @@
       :key="stats.id"
     >
       <div class="col-4">
-        <b-badge pill aria-valuenow="200" variant="success">{{stats.stat.name}}</b-badge>
+        <b-badge pill aria-valuenow="200" variant="success">{{
+          stats.stat.name
+        }}</b-badge>
       </div>
       <div class="col-8">
-        <b-progress :variant="colorRandom()" show-progress animated :value="stats.base_stat"></b-progress>
+        <b-progress
+          :variant="colorRandom()"
+          show-progress
+          animated
+          :value="stats.base_stat"
+        ></b-progress>
       </div>
     </div>
-    <!-- <div class="tableStats">
-      <li type="none" v-for="stats in datosPokemon.stats" :key="stats.id">
-        <span style="font-size:20px">
-         {{stats.stat.name}}
-        </span>
-        <div class="Progress">
-          <b-progress :variant="colorRandom()" show-progress animated :value="stats.base_stat"></b-progress>
-        </div>
-      </li>
-    </div>-->
   </div>
 </template>
 
@@ -76,19 +72,19 @@ export default {
       spriteNormal: "https://img.pokemondb.net/sprites/home/normal/",
       spriteShiny: "https://img.pokemondb.net/sprites/home/shiny/",
       error: false,
-      bars: ["success", "info", "warning", "danger", "primary"]
+      bars: ["success", "info", "warning", "danger", "primary"],
     };
   },
   methods: {
-    colorRandom: function() {
+    // creamos un metodo para realizar el cambio de colores aleatorios en las variantes y los progress bars
+    colorRandom: function () {
       var colors = Math.floor(Math.random() * this.bars.length);
       return this.bars[colors];
-      
-    }
+    },
   },
   props: {
-datosPokemon: ""
-  } 
+    datosPokemon: "",
+  },
 };
 </script>
 <style>

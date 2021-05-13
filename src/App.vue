@@ -8,6 +8,7 @@
   </div>
 </template>
 <script>
+// importamos los componentes Header y Footer a nuestro componente principal
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 export default {
