@@ -1,8 +1,6 @@
 <template>
   <div id="pokedex">
-    <div class="container" style="font-size: 30px">
-      Pokemon Pokedex Finder.
-    </div>
+    <div class="container" style="font-size: 30px">Pokemon Pokedex Finder.</div>
     <!-- Imagen del logo principal, Pokebola -->
     <div>
       <img
@@ -25,7 +23,7 @@
             placeholder="Pokemon / Number (1-898)"
           ></b-form-input>
           <br />
-<!-- Boton que genera la ejecucion del metodo con axios para mostrarme al pokemon-->
+          <!-- Boton que genera la ejecucion del metodo con axios para mostrarme al pokemon-->
           <b-button
             class="images btn btn-primary"
             @click="pokemonSearch"
@@ -37,7 +35,7 @@
           <br />
           <!-- Condicional con Imagen donde muestra que ha ocurrido un error -->
           <p v-if="error">
-            Pokemon Search Error 
+            Pokemon Search Error
             <br />
             <img style="width: 10vw" src="../assets/img/danger.png" />
           </p>
@@ -55,7 +53,7 @@
                 "
                 class="mb-2"
               >
-              <!-- Datos del pokemon encontrado o generado aleatoriamente -->
+                <!-- Datos del pokemon encontrado o generado aleatoriamente -->
                 <b-badge style="font-size: 10px" pill variant="primary"
                   >N° {{ random.id }}</b-badge
                 >
@@ -66,7 +64,7 @@
                 <br />
                 <h2 id="pokemons" class="pokemons">{{ random.name }}</h2>
 
-              <!-- Boton que genera el modal donde visualizamos las imagenes, caracteristicas y estatus del pokemon -->
+                <!-- Boton que genera el modal donde visualizamos las imagenes, caracteristicas y estatus del pokemon -->
                 <b-button v-b-modal.modal-md variant="primary"
                   >About <b-icon-eye></b-icon-eye
                 ></b-button>
@@ -87,9 +85,7 @@
           >
             <p>
               NOTE: To search, enter a name or number.
-              <br />if the search is blank, a random pokemon will be 
-              spawned.
-              
+              <br />if the search is blank, a random pokemon will be spawned.
             </p>
           </div>
         </div>
