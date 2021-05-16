@@ -1,7 +1,7 @@
 <template>
   <div id="pokedex">
     <div class="container" style="font-size: 30px">
-      Buscar Pokemon en la Pokedex
+      Pokemon Pokedex Finder.
     </div>
     <!-- Imagen del logo principal, Pokebola -->
     <div>
@@ -15,12 +15,12 @@
     <!-- forms para la busqueda de los pokemons -->
     <div class="container">
       <div class="p-2">
-        <div class="buscador">
+        <div class="search">
           <b-form-input
-            @keyup.enter="buscarMostrarPokemon"
+            @keyup.enter="pokemonSearch"
             class="form-control"
             maxlength="20"
-            v-model="texto"
+            v-model="text"
             style="text-align: center"
             placeholder="Pokemon / Number (1-898)"
           ></b-form-input>
@@ -28,16 +28,16 @@
 <!-- Boton que genera la ejecucion del metodo con axios para mostrarme al pokemon-->
           <b-button
             class="images btn btn-primary"
-            @click="buscarMostrarPokemon"
+            @click="pokemonSearch"
             variant="primary"
-            >Buscar <b-icon-search></b-icon-search
+            >Search Pokemon <b-icon-search></b-icon-search
           ></b-button>
         </div>
         <div class="danger">
           <br />
           <!-- Condicional con Imagen donde muestra que ha ocurrido un error -->
           <p v-if="error">
-            Error al buscar Pokemon
+            Pokemon Search Error 
             <br />
             <img style="width: 10vw" src="../assets/img/danger.png" />
           </p>
@@ -70,8 +70,8 @@
                 <b-button v-b-modal.modal-md variant="primary"
                   >About <b-icon-eye></b-icon-eye
                 ></b-button>
-                <b-modal class="modal-footer1" id="modal-md" size="lg">
-                  <Modal :datosPokemon="random"></Modal>
+                <b-modal class="modal-footer1" id="modal-md" size="md">
+                  <Modal :pokemonData="random"></Modal>
                 </b-modal>
               </b-card>
             </div>
@@ -86,9 +86,10 @@
             "
           >
             <p>
-              NOTA: para buscar ingresa un nombre o número.
-              <br />Si dejas la búsqueda en blanco, se generará un pokemon
-              aleatorio.
+              NOTE: To search, enter a name or number.
+              <br />if the search is blank, a random pokemon will be 
+              spawned.
+              
             </p>
           </div>
         </div>
@@ -106,22 +107,20 @@ export default {
   },
   data() {
     return {
-      texto: "",
+      text: "",
       error: false,
-      mostrar: "",
-      tipoNumero: "",
       random: null,
       spriteNormal: "https://img.pokemondb.net/sprites/home/normal/",
     };
   },
   methods: {
     // metodo donde realizamos la busqueda en nuestro search o si esta en blanco nos arroja un numero aleatorio
-    buscarMostrarPokemon: function () {
-      if (this.texto === "") {
-        this.texto = Math.floor(Math.random() * 807);
+    pokemonSearch: function () {
+      if (this.text === "") {
+        this.text = Math.floor(Math.random() * 807);
       }
       this.axios
-        .get("https://pokeapi.co/api/v2/pokemon/" + this.texto)
+        .get("https://pokeapi.co/api/v2/pokemon/" + this.text)
         .then((response) => {
           this.random = response.data;
           this.error = false;
@@ -139,8 +138,8 @@ export default {
           }
         });
       // realizamos una limpieza del campo para que no quede con datos escritos
-      if (this.texto != "") {
-        this.texto = "";
+      if (this.text != "") {
+        this.text = "";
       }
     },
   },
@@ -177,7 +176,7 @@ h5:first-letter {
   z-index: 1;
   text-align: center;
 }
-.buscador .form-control {
+.search .form-control {
   max-width: 90%;
   width: 70%;
   margin: auto;

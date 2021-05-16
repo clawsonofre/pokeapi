@@ -1,17 +1,17 @@
 <template>
   <div id="modalCharapterPokemon">
     <div class="infoPokemon" style="font-size: 15px">
-      <b-badge pill :variant="colorRandom()">N° {{ datosPokemon.id }}</b-badge>
+      <b-badge pill :variant="randomColor()">N° {{ pokemonData.id }}</b-badge>
       <br />
       <div class="imagenPokemon">
-        <img :src="spriteNormal + datosPokemon.name + '.png'" />
-        <img :src="spriteShiny + datosPokemon.name + '.png'" />
+        <img :src="spriteNormal + pokemonData.name + '.png'" />
+        <img :src="spriteShiny + pokemonData.name + '.png'" />
       </div>
       <br />
       <br />
 
       <b-badge pill variant="info">
-        <span style="font-size: 20px">{{ datosPokemon.name }}</span>
+        <span style="font-size: 20px">{{ pokemonData.name }}</span>
       </b-badge>
     </div>
     <br />
@@ -19,12 +19,12 @@
       Types:
       <span>
         <b-badge
-          :variant="colorRandom()"
+          :variant="randomColor()"
           style="margin-left: 5px"
           pill
-          v-for="tipo in datosPokemon.types"
-          :key="tipo.type.name"
-          >{{ tipo.type.name }}</b-badge
+          v-for="type in pokemonData.types"
+          :key="type.type.name"
+          >{{ type.type.name }}</b-badge
         >
       </span>
     </div>
@@ -34,10 +34,10 @@
       <b-badge
         style="margin-left: 5px"
         pill
-        :variant="colorRandom()"
-        v-for="abilidad in datosPokemon.abilities"
-        :key="abilidad.ability.name"
-        >{{ abilidad.ability.name }}</b-badge
+        :variant="randomColor()"
+        v-for="ability in pokemonData.abilities"
+        :key="ability.ability.name"
+        >{{ ability.ability.name }}</b-badge
       >
     </div>
     <br />
@@ -45,17 +45,17 @@
     <div
       class="row align-items-center"
       type="none"
-      v-for="stats in datosPokemon.stats"
+      v-for="stats in pokemonData.stats"
       :key="stats.id"
     >
       <div class="col-4">
-        <b-badge pill aria-valuenow="200" variant="success">{{
+        <b-badge pill aria-value now="200" variant="success">{{
           stats.stat.name
         }}</b-badge>
       </div>
-      <div class="col-8">
+      <div class="col-7">
         <b-progress
-          :variant="colorRandom()"
+          :variant="randomColor()"
           show-progress
           animated
           :value="stats.base_stat"
@@ -77,13 +77,13 @@ export default {
   },
   methods: {
     // creamos un metodo para realizar el cambio de colores aleatorios en las variantes y los progress bars
-    colorRandom: function () {
+    randomColor: function () {
       var colors = Math.floor(Math.random() * this.bars.length);
       return this.bars[colors];
     },
   },
   props: {
-    datosPokemon: "",
+    pokemonData: "",
   },
 };
 </script>
