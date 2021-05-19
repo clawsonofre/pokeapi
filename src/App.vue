@@ -22,7 +22,7 @@ export default {
 
 <style>
 #app {
-  background-image: url(./assets/img/fondoAnimado.jpg) ;
+  background-image: url(./assets/img/background.jpg) ;
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
