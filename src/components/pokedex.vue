@@ -59,7 +59,7 @@
                   >About <b-icon-eye></b-icon-eye
                 ></b-button>
                 <b-modal class="modal-footer1" id="modal-md" size="md">
-                  <Modal :pokemonData="random"></Modal>
+                  <StatisticsPokemon :pokemonData="random"></StatisticsPokemon>
                 </b-modal>
               </b-card>
             </div>
@@ -79,11 +79,11 @@
 
 <script>
 // importamos el archivos que nos mostrara las imagenes y caracteristicas del pokemon encontrado
-import Modal from "./modal.vue";
+import StatisticsPokemon from "./statsPokemon.vue";
 import Error from "./error.vue";
 export default {
   components: {
-    Modal,
+    StatisticsPokemon,
     Error,
   },
   data() {
