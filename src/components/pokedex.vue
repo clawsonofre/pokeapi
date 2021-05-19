@@ -1,6 +1,6 @@
 <template>
   <div id="pokedex">
-    <div class="container" style="font-size: 30px">Pokemon Pokedex Finder.</div>
+    <div class="container">Pokemon Pokedex Finder.</div>
     <!-- Imagen del logo principal, Pokebola -->
     <div>
       <img
@@ -33,12 +33,7 @@
         </div>
         <div class="danger">
           <br />
-          <!-- Condicional con Imagen donde muestra que ha ocurrido un error -->
-          <p v-if="error">
-            Pokemon Search Error
-            <br />
-            <img style="width: 10vw" src="../assets/img/danger.png" />
-          </p>
+          <Error v-if="error" />
           <div class="box" v-if="random">
             <div>
               <b-card
@@ -46,12 +41,7 @@
                 img-alt="Image"
                 img-top
                 tag="article"
-                style="
-                  width: 100%;
-                  border-radius: 25px;
-                  background-color: rgba(100%, 100%, 100%, 0.5);
-                "
-                class="mb-2"
+                class="card mb-2"
               >
                 <!-- Datos del pokemon encontrado o generado aleatoriamente -->
                 <b-badge style="font-size: 10px" pill variant="primary"
@@ -75,14 +65,7 @@
             </div>
           </div>
           <br />
-          <div
-            style="
-              margin-left: 5%;
-              margin-right: 5%;
-              background-color: white;
-              border-radius: 50px;
-            "
-          >
+          <div>
             <p>
               NOTE: To search, enter a name or number.
               <br />if the search is blank, a random pokemon will be spawned.
@@ -97,9 +80,11 @@
 <script>
 // importamos el archivos que nos mostrara las imagenes y caracteristicas del pokemon encontrado
 import Modal from "./modal.vue";
+import Error from "./error.vue";
 export default {
   components: {
     Modal,
+    Error,
   },
   data() {
     return {
@@ -141,13 +126,18 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 #pokedex {
   font-family: verdana;
 }
-img {
-  width: 70%;
-  height: auto;
+
+#pokedex.container {
+  font-size: 30px;
+}
+.card {
+  width: 100%;
+  border-radius: 25px;
+  background-color: rgba(100%, 100%, 100%, 0.5);
 }
 .box {
   width: 300px;
@@ -179,6 +169,12 @@ h5:first-letter {
 }
 .modal-footer1 {
   justify-content: center;
+}
+p {
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: white;
+  border-radius: 50px;
 }
 @media only screen and (max-width: 650px) {
   p {
