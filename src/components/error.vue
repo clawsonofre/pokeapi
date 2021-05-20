@@ -1,6 +1,6 @@
 <template><div class="searchError">
           <p >
-            Pokemon Search Error.
+            Pokemon Search Error
             <br /><br />
             <img src="../assets/img/error.png" />
           </p></div>
