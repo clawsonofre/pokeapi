@@ -1,9 +1,9 @@
 // routes.js
-import pokedex from './components/pokedex.vue';
+import Pokedex from './components/Pokedex.vue';
 
 const routes = [
-    { path: '/', component: pokedex },
-    { path: '/pokedex', component: pokedex }
+    { path: '/', component: Pokedex },
+    { path: '/Pokedex', component: Pokedex }
 ];
 
 export default routes;

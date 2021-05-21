@@ -1,21 +1,21 @@
 <template>
   <div id="app">
-    <Header></Header>
+    <PokeHeader></PokeHeader>
     <router-view></router-view>
     <div></div>
     <!--Arreglar para que el footer se vea bien, no se ve completo -->
-    <Footer class="mt-5"></Footer>
+    <PokeFooter class="mt-5"></PokeFooter>
   </div>
 </template>
 <script>
 // importamos los componentes Header y Footer a nuestro componente principal
-import Header from "./components/Header.vue";
-import Footer from "./components/Footer.vue";
+import PokeHeader from "./components/views/PokeHeader";
+import PokeFooter from "./components/views/PokeFooter";
 export default {
   name: "App",
   components: {
-    Header,
-    Footer
+    PokeHeader,
+    PokeFooter
   }
 };
 </script>
