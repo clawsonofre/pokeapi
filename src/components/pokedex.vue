@@ -1,15 +1,6 @@
 <template>
-  <div id="pokedex">
-    <div class="container">Pokemon Pokedex Finder.</div>
-    <!-- Imagen del logo principal, Pokebola -->
-    <div>
-      <img
-        src="../assets/img/pkball.png"
-        fluid="responsive image"
-        class="pokeball"
-        alt="Responsive image"
-      />
-    </div>
+  <div id="Pokedex">
+    <PokeTitleBall />
     <!-- forms para la busqueda de los pokemons -->
     <div class="container">
       <div class="p-2">
@@ -19,7 +10,6 @@
             class="form-control"
             maxlength="20"
             v-model="text"
-            style="text-align: center"
             placeholder="Pokemon / Number (1-898)"
           ></b-form-input>
           <br />
@@ -33,7 +23,7 @@
         </div>
         <div class="danger">
           <br />
-          <Error v-if="error" />
+          <PokeError v-if="error" />
           <div class="box" v-if="random">
             <div>
               <b-card
@@ -59,18 +49,13 @@
                   >About <b-icon-eye></b-icon-eye
                 ></b-button>
                 <b-modal class="modal-footer1" id="modal-md" size="md">
-                  <StatisticsPokemon :pokemonData="random"></StatisticsPokemon>
+                  <PokeModal :pokemonData="random" />
                 </b-modal>
               </b-card>
             </div>
           </div>
           <br />
-          <div>
-            <p>
-              NOTE: To search, enter a name or number.
-              <br />if the search is blank, a random pokemon will be spawned.
-            </p>
-          </div>
+          <PokeNota />
         </div>
       </div>
     </div>
@@ -78,36 +63,41 @@
 </template>
 
 <script>
-// importamos el archivos que nos mostrara las imagenes y caracteristicas del pokemon encontrado
-import StatisticsPokemon from "./statsPokemon.vue";
-import Error from "./error.vue";
+// importamos los componentes a usar
+import PokeModal from "./PokeModal";
+import PokeError from "./PokeError";
+import PokeNota from "./PokeNota";
+import PokeTitleBall from "./PokeTitleBall";
+
 export default {
   components: {
-    StatisticsPokemon,
-    Error,
+    PokeTitleBall,
+    PokeError,
+    PokeModal,
+    PokeNota
   },
   data() {
     return {
       text: "",
       error: false,
       random: null,
-      spriteNormal: "https://img.pokemondb.net/sprites/home/normal/",
+      spriteNormal: "https://img.pokemondb.net/sprites/home/normal/"
     };
   },
   methods: {
     // metodo donde realizamos la busqueda en nuestro search o si esta en blanco nos arroja un numero aleatorio
-    pokemonSearch: function () {
+    pokemonSearch: function() {
       if (this.text === "") {
         this.text = Math.floor(Math.random() * 807);
       }
       this.axios
         .get("https://pokeapi.co/api/v2/pokemon/" + this.text)
-        .then((response) => {
+        .then(response => {
           this.random = response.data;
           this.error = false;
         })
         // capturamos los errores en tal caso no coincida la busqueda
-        .catch((error) => {
+        .catch(error => {
           if (error.response.status == 404) {
             this.error = true;
             this.random = null;
@@ -122,22 +112,21 @@ export default {
       if (this.text != "") {
         this.text = "";
       }
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
-#pokedex {
+#Pokedex {
   font-family: verdana;
 }
 
-#pokedex.container {
+#Pokedex .PokeTop {
   font-size: 30px;
 }
-.card {
-  width: 100%;
-  border-radius: 25px;
-  background-color: rgba(100%, 100%, 100%, 0.5);
+
+.form-control {
+  text-align: center;
 }
 .box {
   width: 300px;
@@ -152,11 +141,6 @@ h4:first-letter,
 h5:first-letter {
   text-transform: uppercase;
 }
-.pokeball {
-  position: relative;
-  width: 300px;
-  max-width: 80%;
-}
 .container1 {
   font-size: 7px;
   z-index: 1;
@@ -169,22 +153,6 @@ h5:first-letter {
 }
 .modal-footer1 {
   justify-content: center;
-}
-p {
-  margin-left: 5%;
-  margin-right: 5%;
-  background-color: white;
-  border-radius: 50px;
-}
-@media only screen and (max-width: 650px) {
-  p {
-    font-size: 15px;
-  }
-}
-@media only screen and (max-width: 500px) {
-  p {
-    font-size: 8px;
-  }
 }
 @media only screen and (max-width: 500px) {
   .pokeball {
