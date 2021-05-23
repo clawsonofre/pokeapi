@@ -32,25 +32,24 @@
                 img-top
                 tag="article"
                 class="card mb-2"
-              >
-                <!-- Datos del pokemon encontrado o generado aleatoriamente -->
-                <b-badge style="font-size: 10px" pill variant="primary"
-                  >N° {{ random.id }}</b-badge
-                >
-                <br />
-                <br />
-                <img :src="spriteNormal + random.name + '.png'" />
-                <br />
-                <br />
-                <h2 id="pokemons" class="pokemons">{{ random.name }}</h2>
+                ><div class="pokemons">
+                  <!-- Datos del pokemon encontrado o generado aleatoriamente -->
+                  <b-badge pill variant="primary">N° {{ random.id }}</b-badge>
+                  <br />
+                  <br />
+                  <img :src="spriteNormal + random.name + '.png'" />
+                  <br />
+                  <br />
+                  <h2 class="pokemons">{{ random.name }}</h2>
 
-                <!-- Boton que genera el modal donde visualizamos las imagenes, caracteristicas y estatus del pokemon -->
-                <b-button v-b-modal.modal-md variant="primary"
-                  >About <b-icon-eye></b-icon-eye
-                ></b-button>
-                <b-modal class="modal-footer1" id="modal-md" size="md">
-                  <PokeModal :pokemonData="random" />
-                </b-modal>
+                  <!-- Boton que genera el modal donde visualizamos las imagenes, caracteristicas y estatus del pokemon -->
+                  <b-button v-b-modal.modal-md variant="primary"
+                    >About <b-icon-eye></b-icon-eye
+                  ></b-button>
+                  <b-modal class="modal-footer1" id="modal-md" size="md">
+                    <PokeModal :pokemonData="random" />
+                  </b-modal>
+                </div>
               </b-card>
             </div>
           </div>
