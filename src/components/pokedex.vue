@@ -9,7 +9,7 @@
             @keyup.enter="pokemonSearch"
             class="form-control"
             maxlength="20"
-            v-model="text"
+            v-model="pokemonText"
             placeholder="Pokemon / Number (1-898)"
           ></b-form-input>
           <br />
@@ -23,8 +23,8 @@
         </div>
         <div class="danger">
           <br />
-          <PokeError v-if="error" />
-          <div class="box" v-if="random">
+          <PokeError v-if="pokemonError" />
+          <div class="box" v-if="pokemonRandom">
             <div>
               <b-card
                 align
@@ -34,20 +34,20 @@
                 class="card mb-2"
                 ><div class="pokemons">
                   <!-- Datos del pokemon encontrado o generado aleatoriamente -->
-                  <b-badge pill variant="primary">N° {{ random.id }}</b-badge>
+                  <b-badge pill variant="primary">N° {{ pokemonRandom.id }}</b-badge>
                   <br />
                   <br />
-                  <img :src="spriteNormal + random.name + '.png'" />
+                  <img :src="pokemonSpriteNormal + pokemonRandom.name + '.png'" />
                   <br />
                   <br />
-                  <h2 class="pokemons">{{ random.name }}</h2>
+                  <h2 class="pokemons">{{ pokemonRandom.name }}</h2>
 
                   <!-- Boton que genera el modal donde visualizamos las imagenes, caracteristicas y estatus del pokemon -->
                   <b-button v-b-modal.modal-md variant="primary"
                     >About <b-icon-eye></b-icon-eye
                   ></b-button>
                   <b-modal class="modal-footer1" id="modal-md" size="md">
-                    <PokeModal :pokemonData="random" />
+                    <PokeModal :pokemonData="pokemonRandom" />
                   </b-modal>
                 </div>
               </b-card>
@@ -77,39 +77,39 @@ export default {
   },
   data() {
     return {
-      text: "",
-      error: false,
-      random: null,
-      spriteNormal: "https://img.pokemondb.net/sprites/home/normal/"
+      pokemonText: "",
+      pokemonError: false,
+      pokemonRandom: null,
+      pokemonSpriteNormal: "https://img.pokemondb.net/sprites/home/normal/"
     };
   },
   methods: {
     // metodo donde realizamos la busqueda en nuestro search o si esta en blanco nos arroja un numero aleatorio
     pokemonSearch: function() {
-      if (this.text === "") {
-        this.text = Math.floor(Math.random() * 807);
+      if (this.pokemonText === "") {
+        this.pokemonText = Math.floor(Math.random() * 807);
       }
       this.axios
-        .get("https://pokeapi.co/api/v2/pokemon/" + this.text)
+        .get("https://pokeapi.co/api/v2/pokemon/" + this.pokemonText)
         .then(response => {
-          this.random = response.data;
-          this.error = false;
+          this.pokemonRandom = response.data;
+          this.pokemonError = false;
         })
         // capturamos los errores en tal caso no coincida la busqueda
         .catch(error => {
           if (error.response.status == 404) {
-            this.error = true;
-            this.random = null;
+            this.pokemonError = true;
+            this.pokemonRandom = null;
           } else {
             if (error.response.status == 500) {
-              this.error = true;
-              this.random = null;
+              this.pokemonError = true;
+              this.pokemonRandom = null;
             }
           }
         });
       // realizamos una limpieza del campo para que no quede con datos escritos
-      if (this.text != "") {
-        this.text = "";
+      if (this.pokemonText != "") {
+        this.pokemonText = "";
       }
     }
   }
