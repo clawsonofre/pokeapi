@@ -83,7 +83,10 @@ export default {
     }
   },
   props: {
-    pokemonData: ""
+    pokemonData: {
+      type: Object,
+      required: true,
+    }
   }
 };
 </script>
