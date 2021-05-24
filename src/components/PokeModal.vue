@@ -1,9 +1,9 @@
 <template>
-  <div id="modalCharapterPokemon">
-    <div class="infoPokemon" style="font-size: 15px">
+  <div id="PokemonCharapter">
+    <div class="PokemonInfo">
       <b-badge pill :variant="randomColor()">N° {{ pokemonData.id }}</b-badge>
       <br />
-      <div class="imagenPokemon">
+      <div class="PokemonSprite">
         <img :src="spriteNormal + pokemonData.name + '.png'" />
         <img :src="spriteShiny + pokemonData.name + '.png'" />
       </div>
@@ -11,16 +11,16 @@
       <br />
 
       <b-badge pill variant="info">
-        <span style="font-size: 20px">{{ pokemonData.name }}</span>
+        <span class="PokemonName">{{ pokemonData.name }}</span>
       </b-badge>
     </div>
     <br />
-    <div class="tableType" style="font-size: 16px">
+    <div class="PokemonTableType">
       Types:
       <span>
         <b-badge
+          class="PokemonBadge"
           :variant="randomColor()"
-          style="margin-left: 5px"
           pill
           v-for="type in pokemonData.types"
           :key="type.type.name"
@@ -29,10 +29,10 @@
       </span>
     </div>
     <br />
-    <div class="tableAbility" style="font-size: 16px">
+    <div class="PokemonTableAbility">
       Abilities:
       <b-badge
-        style="margin-left: 5px"
+        class="PokemonBadge"
         pill
         :variant="randomColor()"
         v-for="ability in pokemonData.abilities"
@@ -55,6 +55,7 @@
       </div>
       <div class="col-7">
         <b-progress
+          class="PokemonProgressBar"
           :variant="randomColor()"
           show-progress
           animated
@@ -85,38 +86,41 @@ export default {
   props: {
     pokemonData: {
       type: Object,
-      required: true,
+      required: true
     }
   }
 };
 </script>
-<style>
-#modalCharapterPokemon,
-h1,
-h5 {
+<style scoped>
+#PokemonCharapter {
   font-family: verdana;
   width: 100%;
 }
-
-.infoPokemon,
-.tableStats {
+.PokemonInfo {
   text-align: center;
+  font-size: 15px;
 }
-.imagenPokemon img {
+.PokemonName {
+  font-size: 20px;
+}
+.PokemonSprite img {
   justify-content: right;
   width: 40%;
   max-width: 100%;
 }
-.tableType,
-.tableAbility {
+.PokemonBadge {
+  margin-left: 5px;
+}
+.PokemonTableType,
+.PokemonTableAbility {
   text-align: left;
   color: black;
+  font-size: 16px;
 }
-.Progress {
+.PokemonProgressBar {
   height: auto;
   width: 100%;
 }
-
 p:first-letter,
 b:first-letter,
 h1:first-letter,
