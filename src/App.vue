@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <PokeHeader></PokeHeader>
+    <PokeHeader />
     <router-view></router-view>
     <div></div>
     <!--Arreglar para que el footer se vea bien, no se ve completo -->
-    <PokeFooter class="mt-3"></PokeFooter>
+    <PokeFooter class="mt-3" />
   </div>
 </template>
 <script>
