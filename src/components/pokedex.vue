@@ -4,10 +4,10 @@
     <!-- forms para la busqueda de los pokemons -->
     <div class="container">
       <div class="p-2">
-        <div class="search">
+        <div class="PokemonSearch">
           <b-form-input
             @keyup.enter="pokemonSearch"
-            class="Search"
+            class="PokemonSearch"
             maxlength="20"
             v-model="pokemonText"
             placeholder="Pokemon / Number (1-898)"
@@ -144,7 +144,7 @@ h4:first-letter,
 h5:first-letter {
   text-transform: uppercase;
 }
-.Search {
+.PokemonSearch {
   max-width: 90%;
   width: 70%;
   margin: auto;
