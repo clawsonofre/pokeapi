@@ -1,4 +1,4 @@
-<template><div class="searchError">
+<template><div class="SearchError">
           <p >
             Pokemon Search Error.
             <br /><br />
@@ -6,7 +6,7 @@
           </p></div>
 </template>
 <style scoped>
-.searchError img{
+.SearchError img{
     width: "width: 10vw";
 }
 </style>
