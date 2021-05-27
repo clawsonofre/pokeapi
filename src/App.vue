@@ -9,8 +9,8 @@
 </template>
 <script>
 // importamos los componentes Header y Footer a nuestro componente principal
-import PokeHeader from "./components/views/PokeHeader";
-import PokeFooter from "./components/views/PokeFooter";
+import PokeHeader from "@/components/views/PokeHeader";
+import PokeFooter from "@/components/views/PokeFooter";
 export default {
   name: "App",
   components: {
