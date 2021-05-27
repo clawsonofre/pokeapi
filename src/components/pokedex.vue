@@ -144,14 +144,25 @@ h4:first-letter,
 h5:first-letter {
   text-transform: uppercase;
 }
+
+*::-webkit-input-placeholder {
+  /* Google Chrome y Safari */
+  font-size: 15px;
+}
+@media only screen and (max-width: 649px) {
+.PokemonSearch {
+  margin: auto;
+  text-align: center;
+}
+
+}
+@media only screen and (min-width: 650px) {
 .PokemonSearch {
   max-width: 90%;
   width: 70%;
   margin: auto;
   text-align: center;
 }
-*::-webkit-input-placeholder {
-  /* Google Chrome y Safari */
-  font-size: 15px;
+
 }
 </style>
