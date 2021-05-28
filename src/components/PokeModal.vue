@@ -76,7 +76,7 @@ export default {
       bars: ["success", "info", "warning", "danger", "primary"]
     };
   },
-    props: {
+  props: {
     pokemonData: {
       type: Object,
       required: true
