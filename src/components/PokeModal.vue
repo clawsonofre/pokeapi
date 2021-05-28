@@ -76,6 +76,12 @@ export default {
       bars: ["success", "info", "warning", "danger", "primary"]
     };
   },
+    props: {
+    pokemonData: {
+      type: Object,
+      required: true
+    }
+  },
   methods: {
     // creamos un metodo para realizar el cambio de colores aleatorios en las variantes y los progress bars
     randomColor: function() {
@@ -83,12 +89,6 @@ export default {
       return this.bars[colors];
     }
   },
-  props: {
-    pokemonData: {
-      type: Object,
-      required: true
-    }
-  }
 };
 </script>
 <style scoped>
