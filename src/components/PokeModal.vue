@@ -88,7 +88,7 @@ export default {
       var colors = Math.floor(Math.random() * this.bars.length);
       return this.bars[colors];
     }
-  },
+  }
 };
 </script>
 <style scoped>
