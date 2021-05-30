@@ -65,10 +65,10 @@
 
 <script>
 // imports the components
-import PokeModal from "./PokeModal";
-import PokeError from "./PokeError";
-import PokeNota from "./PokeNota";
-import PokeTitleBall from "./PokeTitleBall";
+import PokeModal from "./poke-modal";
+import PokeError from "./poke-error";
+import PokeNota from "./poke-nota";
+import PokeTitleBall from "./poke-title-ball";
 
 export default {
   // The components write with PascalCase
@@ -98,6 +98,11 @@ export default {
         .then(response => {
           this.pokemonRandom = response.data;
           this.pokemonError = false;
+          if (this.pokemonText == "0"){
+            this.pokemonError = true;
+            this.pokemonText = ""
+            return;
+          }
         })
         // bug catch
         .catch(error => {
