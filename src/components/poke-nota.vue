@@ -6,6 +6,11 @@
     </p>
   </div>
 </template>
+<script>
+export default {
+  name: 'poke-nota',
+}
+</script>
 <style scoped>
 p {
   margin-left: 5%;

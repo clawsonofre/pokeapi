@@ -68,6 +68,7 @@
 
 <script>
 export default {
+  name: 'poke-modal',
   data() {
     return {
       spriteNormal: "https://img.pokemondb.net/sprites/home/normal/",

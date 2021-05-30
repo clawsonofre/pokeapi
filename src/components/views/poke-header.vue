@@ -8,6 +8,11 @@
     </b-navbar>
   </div>
 </template>
+<script>
+export default {
+  name: 'poke-header',
+}
+</script>
 <style scoped>
 #PokeHeader {
   z-index: 1005;

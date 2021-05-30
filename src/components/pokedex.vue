@@ -71,6 +71,7 @@ import PokeNota from "./poke-nota";
 import PokeTitleBall from "./poke-title-ball";
 
 export default {
+  name: 'pokedex',
   // The components write with PascalCase
   components: {
     PokeTitleBall,

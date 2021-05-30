@@ -11,6 +11,11 @@
   </footer>
   <!-- Footer -->
 </template>
+<script>
+export default {
+  name: 'poke-footer',
+}
+</script>
 <style scoped>
 #PokeFooter {
 background-color: rgb(0, 0, 0);

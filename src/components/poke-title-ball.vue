@@ -12,6 +12,11 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  name: 'poke-title-ball',
+}
+</script>
 <style scoped>
 .PokeTitleBall {
     font-size: 30px;
