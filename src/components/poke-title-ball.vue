@@ -14,7 +14,7 @@
 </template>
 <script>
 export default {
-  name: 'poke-title-ball',
+  name: 'poke-title-ball', 
 }
 </script>
 <style scoped>
