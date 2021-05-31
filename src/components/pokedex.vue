@@ -1,6 +1,6 @@
 <template>
   <div id="Pokedex">
-    <PokeTitleBall />
+    <PokeTitleBall /> 
     <!-- form the search pokemon -->
     <div class="container">
       <div class="p-2">
