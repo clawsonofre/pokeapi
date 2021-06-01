@@ -1,6 +1,6 @@
 <template>
   <div id="Pokedex">
-    <PokeTitleBall /> 
+    <PokeTitleBall />
     <!-- form the search pokemon -->
     <div class="container">
       <div class="p-2">
@@ -66,41 +66,33 @@
 
 <script>
 // imports the components
-import PokeModal from "./poke-modal";
-import PokeError from "./poke-error";
-import PokeNota from "./poke-nota";
-import PokeTitleBall from "./poke-title-ball";
+import PokeModal from "@/components/poke-modal.vue";
+import PokeError from "@/components/poke-error.vue";
+import PokeNota from "@/components/poke-nota.vue";
+import PokeTitleBall from "@/components/poke-title-ball.vue";
+import getRandomPokemonNumber from '@/components/Pokedex/helpers/getRandomPokemonNumber.js'
+import {
+  MIN_POKEMON_NUMBER,
+  MAX_POKEMON_NUMBER,
+} from '@/components/Pokedex/constants/pokemonNumbers.js'
 
-//added function before export default
 
 function pokemonSearch() {
   {
+    this.pokemonError = false;
+
     if (this.pokemonText === "") {
-      this.pokemonText = Math.floor(Math.random() * 807);
+      this.pokemonText = getRandomPokemonNumber(MIN_POKEMON_NUMBER, MAX_POKEMON_NUMBER)
     }
     this.axios
       .get("https://pokeapi.co/api/v2/pokemon/" + this.pokemonText)
       .then(response => {
         this.pokemonRandom = response.data;
-        this.pokemonError = false;
-        if (this.pokemonText == "0") {
-          this.pokemonError = true;
-          this.pokemonText = "";
-          return;
-        }
       })
       // bug catch
-      .catch(error => {
-        if (error.response.status == 404) {
-          this.pokemonError = true;
-          this.pokemonRandom = null;
-          return;
-        }
-        if (error.response.status == 500) {
-          this.pokemonError = true;
-          this.pokemonRandom = null;
-          return;
-        }
+      .catch(() => {
+        this.pokemonError = true;
+        this.pokemonRandom = null;
       });
     // the search is cleaned when searching
     if (this.pokemonText != "") {

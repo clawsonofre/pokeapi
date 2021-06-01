@@ -1,5 +1,5 @@
 // routes.js
-import Pokedex from './components/pokedex.vue';
+import Pokedex from '@/components/Pokedex/Pokedex.vue';
 
 const routes = [
     { path: '/', component: Pokedex },
